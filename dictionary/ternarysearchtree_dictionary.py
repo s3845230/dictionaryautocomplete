@@ -14,6 +14,25 @@ from dictionary.node import Node
 class TernarySearchTreeDictionary(BaseDictionary):
 
     def build_dictionary(self, words_frequencies: [WordFrequency]):
+        rootnode2 = Node()
+        rootnode2.letter
+        rootnode = {}
+        for word in words_frequencies:
+            currentnode = rootnode
+            currentword = []
+            currentword[:0] = word
+            for letter in currentword:
+                if(rootnode is None):
+                    rootnode = {
+                        "letter": letter,
+                        "left": "",
+                        "right": "",
+                        "middle": "",
+                        "frequency": -1,
+                    }
+                    currentnode = rootnode
+                elif(rootnode["letter"]):
+                    
         """
         construct the data structure to store nodes
         @param words_frequencies: list of (word, frequency) to be stored
