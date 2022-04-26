@@ -18,20 +18,44 @@ class TernarySearchTreeDictionary(BaseDictionary):
         for currentWord in words_frequencies:
             trackedNode = rootNode
             seperatedWord = []
-            seperatedWord[:0] = currentWord
-            if(rootNode is None):
-                for letter in seperatedWord:
-                    if(rootNode is None):
+            seperatedWord[:0] = currentWord.word
+            # for first word, constructed 'manually'. might adjust to only first letter are full code construction
+            if(rootNode.letter is None):
+                for letter in seperatedWord[:-1]:
+                    # for very first letter, set root node
+                    if(rootNode.letter is None):
                         rootNode = Node(letter, None, False)
                         trackedNode = rootNode
                     else:
                         trackedNode.middle = Node(letter, None, False)
-                        #need to add frequency to last letter and set boolean to true
+                        trackedNode = trackedNode.middle
+                # for last letter, set frequency and endword boolean
+                trackedNode.frequency = currentWord.frequency
+                trackedNode.end_word = True
             else:
-                for letter in seperatedWord:
+                for letter in seperatedWord[:-1]:
+                    # if letter matches, go down the tree
                     if(letter == trackedNode.letter):
-                        trackedNode = rootNode.middle
-                    elif():
+                        trackedNode = trackedNode.middle
+                    # if letter is earlier in alphabet than current node letter
+                    elif(ord(letter) < ord(trackedNode.letter)):
+                        if(ord(letter) < ord(trackedNode.left.letter)):
+                            trackedNode = trackedNode.left
+                        else:
+                            # create new node, enter it
+                    elif(ord(letter) > ord(trackedNode.letter)):
+                        if(ord(letter) > ord(trackedNode.right.letter)):
+                            trackedNode = trackedNode.right
+                        else:
+                            # create new node, enter it
+                    
+
+
+                l = "web"
+                n = []
+                for x in l:
+                    n.append(ord(x) - 96)
+                print(n)
 
 
         """
