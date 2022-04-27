@@ -1,0 +1,1 @@
+python3.10 dictionary_file_based.py list data/sampleData.txt test/test1.in test/test1.out
