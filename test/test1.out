@@ -1,18 +1,21 @@
-Found 'facial' with frequency 182033
-Delete 'facial' succeeded
-NOT Found 'facial'
-NOT Found 'booming'
 Add 'booming' succeeded
-Found 'booming' with frequency 123456
-Time Elapsed (ns): 47761
-Time Elapsed (s): 4.7761e-05
-Autocomplete for 'boo': [ booming: 123456  boom: 21620  bookkeeping: 21582  ]
-Delete 'boom' succeeded
-Autocomplete for 'boo': [ booming: 123456  bookkeeping: 21582  booby: 8764  ]
-Found 'aluminum' with frequency 329946
-Autocomplete for 'alum': [ aluminum: 329946  alumna: 6997  ]
-Delete 'alumna' succeeded
-Autocomplete for 'alum': [ aluminum: 329946  ]
-Autocomplete for 'alrighty': [ ]
-Time Elapsed (ns): 169884
-Time Elapsed (s): 0.000169884
+Time Elapsed (ns): 43332
+Add 'sysop' succeeded
+Time Elapsed (ns): 28280
+Add 'droege' succeeded
+Time Elapsed (ns): 12154
+Add 'mumbled' succeeded
+Time Elapsed (ns): 16892
+Add 'opensubscriber' succeeded
+Time Elapsed (ns): 23966
+Add 'underappreciated' succeeded
+Time Elapsed (ns): 28365
+Add 'sampai' succeeded
+Time Elapsed (ns): 22551
+Add 'trees' succeeded
+Time Elapsed (ns): 21875
+Add 'nickelodeon' succeeded
+Time Elapsed (ns): 20400
+Add 'quintuple' succeeded
+Time Elapsed (ns): 23564
+Time Average (ns): 24137.9

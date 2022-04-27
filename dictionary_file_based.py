@@ -21,6 +21,7 @@ from dictionary.ternarysearchtree_dictionary import TernarySearchTreeDictionary
 
 timeStart = 0
 timeEnd = 0
+timeElapsedList = []
 
 
 def usage():
@@ -123,9 +124,14 @@ if __name__ == '__main__':
             elif command == 'TE':
                 timeEnd = time.time_ns()
                 timeElapsed = timeEnd - timeStart
+                timeElapsedList.append(timeElapsed)
                 output_file.write("Time Elapsed (ns): " + str(timeElapsed) + '\n')
-                output_file.write("Time Elapsed (s): " + str(timeElapsed/1000000000.0) + '\n')
+                # output_file.write("Time Elapsed (s): " + str(timeElapsed/1000000000.0) + '\n')
 
+            # time average
+            elif command == 'TA':
+                averageTimeElapsed = sum(timeElapsedList)/len(timeElapsedList)
+                output_file.write("Time Average (ns): " + str(averageTimeElapsed) + '\n')
             else:
                 print('Unknown command.')
                 print(line)
