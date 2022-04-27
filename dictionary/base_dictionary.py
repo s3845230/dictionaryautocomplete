@@ -1,6 +1,5 @@
 from dictionary.word_frequency import WordFrequency
 
-
 # -------------------------------------------------
 # Base class for dictionary implementations. DON'T CHANGE THIS FILE.
 #
