@@ -12,3 +12,5 @@ Autocomplete for 'alum': [ aluminum: 329946  alumna: 6997  ]
 Delete 'alumna' succeeded
 Autocomplete for 'alum': [ aluminum: 329946  ]
 Autocomplete for 'alrighty': [ ]
+Time Elapsed (ns): 255787
+Time Elapsed (s): 0.000255787

@@ -1,4 +1,5 @@
 import sys
+import time
 from dictionary.node import Node
 from dictionary.word_frequency import WordFrequency
 from dictionary.base_dictionary import BaseDictionary
@@ -17,6 +18,10 @@ from dictionary.ternarysearchtree_dictionary import TernarySearchTreeDictionary
 # __author__ = 'Son Hoang Dau'
 # __copyright__ = 'Copyright 2022, RMIT University'
 # -------------------------------------------------------------------
+
+timeStart = 0
+timeEnd = 0
+
 
 def usage():
     """
@@ -109,6 +114,18 @@ if __name__ == '__main__':
                 for item in list_words:
                     line = line + item.word + ": " + str(item.frequency) + "  "
                 output_file.write(line + ']\n')
+
+            # start timer
+            elif command == 'TS':
+                timeStart = time.time_ns()
+            # end timer
+
+            elif command == 'TE':
+                timeEnd = time.time_ns()
+                timeElapsed = timeEnd - timeStart
+                output_file.write("Time Elapsed (ns): " + str(timeElapsed) + '\n')
+                output_file.write("Time Elapsed (s): " + str(timeElapsed/1000000000.0) + '\n')
+
             else:
                 print('Unknown command.')
                 print(line)
