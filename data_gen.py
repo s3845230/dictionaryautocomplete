@@ -1,5 +1,6 @@
 
-SIZE_OF_DATA_FILE=100
+# 50, 500, 1000, 2000, 5000, 10000
+SIZE_OF_DATA_FILE=10000
 
 data_filename = "./data/sampleData200k.txt"
 data_file = open(data_filename, 'r')
