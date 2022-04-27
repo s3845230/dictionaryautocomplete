@@ -1,3 +1,4 @@
+from turtle import left
 from dictionary.base_dictionary import BaseDictionary
 from dictionary.word_frequency import WordFrequency
 from dictionary.node import Node
@@ -20,43 +21,57 @@ class TernarySearchTreeDictionary(BaseDictionary):
             seperatedWord = []
             seperatedWord[:0] = currentWord.word
             # for first word, constructed 'manually'. might adjust to only first letter are full code construction
-            if(rootNode.letter is None):
-                for letter in seperatedWord[:-1]:
-                    # for very first letter, set root node
-                    if(rootNode.letter is None):
-                        rootNode = Node(letter, None, False)
-                        trackedNode = rootNode
-                    else:
-                        trackedNode.middle = Node(letter, None, False)
-                        trackedNode = trackedNode.middle
                 # for last letter, set frequency and endword boolean
-                trackedNode.frequency = currentWord.frequency
-                trackedNode.end_word = True
-            else:
-                for letter in seperatedWord[:-1]:
+                # trackedNode.frequency = currentWord.frequency
+                # trackedNode.end_word = True
+            for currentLetter in seperatedWord:
+
+                nextLetter = False
+                while not nextLetter:
+                    if (trackedNode.letter is None):
+                        trackedNode.letter = currentLetter
                     # if letter matches, go down the tree
-                    if(letter == trackedNode.letter):
+                    if(currentLetter == trackedNode.letter):
+                        if (trackedNode.middle is None):
+                            trackedNode.middle = Node()
                         trackedNode = trackedNode.middle
+                        nextLetter = True
                     # if letter is earlier in alphabet than current node letter
-                    elif(ord(letter) < ord(trackedNode.letter)):
-                        if(ord(letter) < ord(trackedNode.left.letter)):
+                    elif(ord(currentLetter) < ord(trackedNode.letter)):
+                        if (trackedNode.left is None):
+                            trackedNode.left = Node(currentLetter)
+                            trackedNode = trackedNode.left
+                        # if letter is alphabetically further than the left node
+                        if(ord(currentLetter) <= ord(trackedNode.left.letter)):
                             trackedNode = trackedNode.left
                         else:
                             # create new node, enter it
-                    elif(ord(letter) > ord(trackedNode.letter)):
-                        if(ord(letter) > ord(trackedNode.right.letter)):
+                            newNode = Node(currentLetter)
+                            oldLeftNode = trackedNode.left
+                            # fixing references
+                            oldLeftNode.right = newNode
+                            newNode.left = oldLeftNode
+                            newNode.right = trackedNode
+                            trackedNode.left = newNode
+                            trackedNode = newNode
+                    # if letter is later in alphabet than current node letter
+                    elif(ord(currentLetter) > ord(trackedNode.letter)):
+                        if (trackedNode.right is None):
+                            trackedNode.right = Node(currentLetter)
+                            trackedNode = trackedNode.right
+                        # if letter is alphabetically further than the right node
+                        if(ord(currentLetter) >= ord(trackedNode.right.currentLetter)):
                             trackedNode = trackedNode.right
                         else:
                             # create new node, enter it
-                    
-
-
-                l = "web"
-                n = []
-                for x in l:
-                    n.append(ord(x) - 96)
-                print(n)
-
+                            newNode = Node(currentLetter)
+                            oldRightNode = trackedNode.right
+                            # fixing references
+                            oldRightNode.left = newNode
+                            newNode.right = oldRightNode
+                            newNode.left = trackedNode
+                            trackedNode.right = newNode
+                            trackedNode = newNode
 
         """
         construct the data structure to store nodes
