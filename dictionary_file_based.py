@@ -86,15 +86,21 @@ if __name__ == '__main__':
                 command = command_values[0]
                 # search
                 if command == 'S':
+                    timeStart = time.time_ns()
                     word = command_values[1]
                     search_result = agent.search(word)
                     if search_result > 0:
                         output_file.write(f"Found '{word}' with frequency {search_result}\n")
                     else:
                         output_file.write(f"NOT Found '{word}'\n")
+                    timeEnd = time.time_ns()
+                    timeElapsed = timeEnd - timeStart
+                    timeElapsedList.append(timeElapsed)
 
                 # add
                 elif command == 'A':
+                    timeStart = time.time_ns()
+
                     word = command_values[1]
                     frequency = int(command_values[2])
                     word_frequency = WordFrequency(word, frequency)
@@ -103,41 +109,35 @@ if __name__ == '__main__':
                     else:
                         output_file.write(f"Add '{word}' succeeded\n")
 
+                    timeEnd = time.time_ns()
+                    timeElapsed = timeEnd - timeStart
+                    timeElapsedList.append(timeElapsed)
+
                 # delete
                 elif command == 'D':
+                    timeStart = time.time_ns()
                     word = command_values[1]
                     if not agent.delete_word(word):
                         output_file.write(f"Delete '{word}' failed\n")
                     else:
                         output_file.write(f"Delete '{word}' succeeded\n")
+                    timeEnd = time.time_ns()
+                    timeElapsed = timeEnd - timeStart
+                    timeElapsedList.append(timeElapsed)
 
                 # check
                 elif command == 'AC':
+                    timeStart = time.time_ns()
                     word = command_values[1]
                     list_words = agent.autocomplete(word)
                     line = "Autocomplete for '" + word + "': [ "
                     for item in list_words:
                         line = line + item.word + ": " + str(item.frequency) + "  "
                     output_file.write(line + ']\n')
-
-                # start timer
-                elif command == 'TS':
-                    timeStart = time.time_ns()
-                # end timer
-
-                elif command == 'TE':
                     timeEnd = time.time_ns()
                     timeElapsed = timeEnd - timeStart
-                    timeElapsedList.append(timeElapsed/NUM_OF_OPERATIONS)
-                    output_file.write("Time Elapsed (ns): " + str(timeElapsed) + '\n')
-                    output_file.write("Time Elapsed (s): " + str(timeElapsed/1000000000.0) + '\n')
-                    # print("Time Elapsed (s): " + str(timeElapsed/1000000000.0) + '\n')
-                    # print("Average time taken to add (ns): " + str(timeElapsed/1000.0))
+                    timeElapsedList.append(timeElapsed)
 
-                # time average
-                elif command == 'TA':
-                    averageTimeElapsed = sum(timeElapsedList)/len(timeElapsedList)
-                    output_file.write("Time Average (ns): " + str(averageTimeElapsed) + '\n')
                 else:
                     print('Unknown command.')
                     print(line)
@@ -147,4 +147,5 @@ if __name__ == '__main__':
         except FileNotFoundError as e:
             print("Command file doesn't exist.")
             usage()
-    print("Time Average (ns): " + str(sum(timeElapsedList)/len(timeElapsedList)) + '\n')
+    # print(timeElapsedList)
+    print("Time Average (ns): " + str(sum(timeElapsedList)/len(timeElapsedList)))
